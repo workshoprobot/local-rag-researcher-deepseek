@@ -1,12 +1,12 @@
 # 🚀 **Local RAG Researcher with DeepSeek R1 & Langgraph**
 
+I built a **local adaptive RAG research agent** on top of **LangGraph**, using the **DeepSeek R1 model** running locally with **Ollama**. The researcher agent takes user instructions, generates relevant research queries, and retrieves necessary documents from a local **Chroma database**. Each document is evaluated for **relevance** against the original query. If the retrieved documents are insufficient or irrelevant, the researcher can optionally **search the web** for additional sources. Each query's findings are summarized and sent to a **final writer agent**, which crafts a **comprehensive report** based on a predefined user reporting format.  
+
 ### 👉 **[Check Out This Guide: Build Your Own Local RAG Researcher with DeepSeek R1!](https://dev.to/kaymen99/build-your-own-local-rag-researcher-with-deepseek-r1-11m) 🚀**
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/5dc34341-3a2f-461c-b66d-46b134fe5bd9" alt="Demo of Local RAG Researcher with LangGraph & DeepSeek">
 </div>
-
-I built a **local adaptive RAG research agent** on top of **LangGraph**, using the **DeepSeek R1 model** running locally with **Ollama**. The researcher agent takes user instructions, generates relevant research queries, and retrieves necessary documents from a local **Chroma database**. Each document is evaluated for **relevance** against the original query. If the retrieved documents are insufficient or irrelevant, the researcher can optionally **search the web** for additional sources. Each query's findings are summarized and sent to a **final writer agent**, which crafts a **comprehensive report** based on a predefined user reporting format.  
 
 # System Flowchart
 This is the detailed flow of the system:
