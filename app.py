@@ -66,7 +66,7 @@ def clear_chat():
     st.session_state.uploader_key = 0
 
 def main():
-    st.set_page_config(page_title="DeepSeek RAG Researcher", layout="wide")
+    st.set_page_config(page_title="Workshoprobot RAG Researcher", layout="wide")
 
     # Initialize session states
     if "processing_complete" not in st.session_state:
@@ -85,7 +85,29 @@ def main():
     # Title row with clear button
     col1, col2 = st.columns([6, 1])
     with col1:
-        st.title("📄 RAG Researcher with DeepSeek R1")
+            container = st.container()
+            with container:
+                colum1, colum2 = st.columns([1,4])
+                with colum1:
+                    st.image("./static/workshoprobot.png")
+                with colum2:
+                    st.markdown("""
+                                <div style="
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: left;
+                                    height: 120px;
+                                    background-color: #00000000;
+                                    font-family: 'Courier New', monospace;
+                                    font-size: 22px;
+                                ">
+                                    Workshop Robot [AI]
+                                </div>
+                                """, unsafe_allow_html=True)
+            st.title("RAG Researcher Reporter") # Main title
+
+# Add content to the container
+       
     with col2:
         if st.button("Clear Chat", use_container_width=True):
             clear_chat()

@@ -57,21 +57,28 @@ def invoke_ollama(model, system_prompt, user_prompt, output_format=None):
         return response.message.content
     
 def invoke_llm(
-    model,  # Specify the model name from OpenRouter
+    #model,  # Specify the model name from OpenRouter
     system_prompt,
     user_prompt,
     output_format=None,
     temperature=0
 ):
         
-    from langchain_openai import ChatOpenAI
-    llm = ChatOpenAI(
-        model=model, 
-        temperature=temperature,
-        openai_api_key=os.getenv("OPENROUTER_API_KEY"),
-        openai_api_base= "https://openrouter.ai/api/v1",
-    )
+    # from langchain_openai import ChatOpenAI
+    # llm = ChatOpenAI(
+    #     model='gpt-4o-mini', 
+    #     temperature=temperature,
+    #     #openai_api_key=os.getenv("OPENAI_API_KEY"),
+    #     #openai_api_base= "https://openrouter.ai/api/v1",
+    # )
     
+    from langchain_deepseek import ChatDeepSeek
+    llm = ChatDeepSeek(
+        model="deepseek-chat",
+        temperature=temperature,
+    
+    )
+
     # If Response format is provided use structured output
     if output_format:
         llm = llm.with_structured_output(output_format)

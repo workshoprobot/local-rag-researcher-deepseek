@@ -2,14 +2,23 @@ import os
 from langchain_community.document_loaders import DirectoryLoader
 from langchain_experimental.text_splitter import SemanticChunker 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
+#from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
 
 VECTOR_DB_PATH = "database"
  
 def get_or_create_vector_db():
     """Get or create the vector DB."""
-    embeddings = HuggingFaceEmbeddings()
+    #embeddings = HuggingFaceEmbeddings()
+    embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-large",
+        # With the `text-embedding-3` class
+        # of models, you can specify the size
+        # of the embeddings you want returned.
+        # dimensions=1024
+    )
+
 
     if os.path.exists(VECTOR_DB_PATH) and os.listdir(VECTOR_DB_PATH):
         # Use the existing vector store
@@ -39,8 +48,14 @@ def add_documents(documents):
     Args:
         documents: List of documents to add to the vector store
     """
-    embeddings = HuggingFaceEmbeddings()
-    
+    #embeddings = HuggingFaceEmbeddings()
+    embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-large",
+        # With the `text-embedding-3` class
+        # of models, you can specify the size
+        # of the embeddings you want returned.
+        # dimensions=1024
+    )
     # Process the new documents
     semantic_text_splitter = SemanticChunker(embeddings)
     documents = semantic_text_splitter.split_documents(documents)
